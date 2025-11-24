@@ -1,7 +1,7 @@
 This is the official code repository for the paper:
 ### Enhancing Domain-Specific Encoder Models with LLM-Generated Data: How to Leverage Ontologies, and How to Do Without Them
 
-Link to the paper: [Click here!]([https://arxiv.org/abs/2510.11599](https://aclanthology.org/2025.findings-emnlp.1238/))
+Link to the paper: [Click here!](https://aclanthology.org/2025.findings-emnlp.1238/)
 
 We propose a pre-training strategy for continual pre-training of transformer encoder models in highly specialized domains. This strategy can leverage datasets consisting of domain-relevant concepts accompanied by corresponding concept definitions, which can be either drawn from an ontology (which will be augmented by an LLM) or can be created by an LLM by extracting relevant concepts from a dataset of domain relevant texts. The proposed pre-training strategy then trains the model as embedding model for these concept definitions, which can be combined with traditional MLM pre-training for increased performance.
 
@@ -43,6 +43,16 @@ Further, we can replace the ontology-derived dataset with a completely LLM-gener
 These are the evaluation results:
 
 <img src="data/Table.png" alt="Evaluation Results">
+
+Explanation:
+
+* The first row refers to the DeBERTa model, which is used as base model in our experiments. It is pretrained on general-domain data, but does not have the required domain-specific knowledge to perform well.
+* The next section evaluates just MLM pretraining on 1) sentences drawn from domain-specific scientific abstracts, 2) concept definitions drawn from ontologies (which are augmented with additional LLM-generated definitions), 3) LLM-generated concept definitions for LLM-extracted concepts from the scientific abstracts, 4) combinations of the concept definition datasets and abstract sentences. We see that using the concept definitions within standard MLM pretraining does not lead to substantially improved results.
+* The third section evaluates our embedding pretraining on both the ontology-derived and completely LLM-generated datasets. We see that our proposed strategy is a viable alternative to MLM pretraining.
+* The fourth section combines MLM with our embedding-based strategy. We see strong synergystic effects, thus leading to the overall best scores.
+* The last section evaluates two baseline models from related domains on our benchmark.
+
+We perform additional experiments to see how our LLM-based approach scales with dataset size. For this, please see our paper.
 
 ## Performing Experiments and Evaluations
 
