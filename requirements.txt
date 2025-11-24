@@ -1,0 +1,12 @@
+blingfire==0.1.8
+editdistance==0.8.1
+matplotlib==3.10.7
+nltk==3.9.1
+numba==0.61.2
+numpy==2.3.5
+scikit_learn==1.7.2
+scipy==1.16.3
+sty==1.0.6
+torch==2.6.0
+tqdm==4.67.1
+transformers==4.51.3
